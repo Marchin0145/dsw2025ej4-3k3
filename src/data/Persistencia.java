@@ -50,7 +50,7 @@ public class Persistencia {
     public static ArrayList<Especie> getEspecies() {
         return especies;
     }
-
+    
     public static double getTotalComida(TipoAlimentacion tipoAlimentacion) {
         double total = 0;
         for(Mamifero animal : animales){

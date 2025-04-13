@@ -7,14 +7,11 @@ import java.awt.Image;
 import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Controlador {
       
-    static Principal Inicio = new Principal();
     static AgregarAnimales VistaA = new AgregarAnimales(Inicio,true);
-    static ListarAnimalesView Lista = new ListarAnimalesView();
        
       
     public static TipoAlimentacion[] getTiposAlimentacion(){
@@ -49,10 +46,6 @@ public class Controlador {
        VistaA.getComboBoxTipoAlimentacion().addItem("CARNIVORO");
        VistaA.getComboBoxTipoAlimentacion().addItem("HERBIVORO");
     }  
-    
-    static void inicio(){        
-     Inicio.setVisible(true);
-    }
     
 static void cargarEspecie(){        
        
@@ -132,10 +125,7 @@ static void cargarPais() {
 
 
 static void agregarAnimal() {
-    ImageIcon iconoOk = new ImageIcon("C:\\Users\\campo\\OneDrive - frt.utn.edu.ar\\Escritorio\\UTN\\Desarrollo de Software\\ejercicio3\\dsw2025ej1\\tilde_verde.png.png");   
-    Image imagenReducida = iconoOk.getImage().getScaledInstance(48, 48, Image.SCALE_SMOOTH);
-    ImageIcon iconoRedimensionado = new ImageIcon(imagenReducida);
-    
+      
     String especieSeleccionada = VistaA.getComboBoxEspecie().getSelectedItem().toString();
     String paisSeleccionado = VistaA.getComboBoxPais().getSelectedItem().toString();
     int numeroSector = Integer.parseInt(VistaA.getComboBoxSector().getSelectedItem().toString());
@@ -183,13 +173,13 @@ static void agregarAnimal() {
             if(VistaA.getComboBoxTipoAlimentacion().getSelectedItem().equals("CARNIVORO")){
             Carnivoro nuevo = new Carnivoro(edad, peso, especieEncontrada, sectorEncontrado, paisEncontrado);
             Persistencia.getAnimales().add(nuevo);
-            JOptionPane.showMessageDialog(null,"Datos guardados correctamente", "Guardado exitoso",JOptionPane.PLAIN_MESSAGE,iconoRedimensionado);
+            JOptionPane.showMessageDialog(null,"Datos guardados correctamente", "Guardado exitoso",JOptionPane.INFORMATION_MESSAGE);
             }
             if(VistaA.getComboBoxTipoAlimentacion().getSelectedItem().equals("HERBIVORO")){
            
             Herbivoro nuevo = new Herbivoro(edad,peso,especieEncontrada,sectorEncontrado,Double.parseDouble(VistaA.getjTextField1().getText()),paisEncontrado);
             Persistencia.getAnimales().add(nuevo);
-            JOptionPane.showMessageDialog(null,"Datos guardados correctamente", "Guardado exitoso",JOptionPane.PLAIN_MESSAGE,iconoRedimensionado);
+            JOptionPane.showMessageDialog(null,"Datos guardados correctamente", "Guardado exitoso",JOptionPane.INFORMATION_MESSAGE);
                 }
             
         } catch (InvalidPropertiesFormatException e) {
@@ -197,12 +187,7 @@ static void agregarAnimal() {
         }
     
 }
-
-    static void mostrarListaAnimales() {
-        Lista.listarAnimales();
-        Lista.setVisible(true);
-        
-    }
+    
     
 static void mostrarValorFijo(){
     
